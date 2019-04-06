@@ -8,11 +8,12 @@ public class User {
 
     @PrimaryKey
     public int id;
-    public String subreddit;
+    public String name;
+    public String links;
     public String description;
     public boolean nsfw;
     public String age;
-    public int subscribers;
+    public int members;
     public String icon;
 
 }

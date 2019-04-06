@@ -58,7 +58,7 @@ public class MyTableViewModel {
         // Create Column Headers
         list.add(new ColumnHeaderModel("Subreddit"));
         list.add(new ColumnHeaderModel("Descrição"));
-        list.add(new ColumnHeaderModel("Subscrições"));
+        list.add(new ColumnHeaderModel("Membros"));
         list.add(new ColumnHeaderModel("Criação"));
         list.add(new ColumnHeaderModel("NSFW"));
 
@@ -76,9 +76,9 @@ public class MyTableViewModel {
             List<CellModel> list = new ArrayList<>();
 
             // The order should be same with column header list;
-            list.add(new CellModel("1-" + i, user.subreddit)); // "Subreddit"
+            list.add(new CellModel("1-" + i, user.name)); // "Subreddit"
             list.add(new CellModel("2-" + i, user.description)); // "Description"
-            list.add(new CellModel("3-" + i, user.subscribers)); // "Subscribers"
+            list.add(new CellModel("3-" + i, user.members)); // "Subscribers"
             list.add(new CellModel("4-" + i, user.age)); // "Age"
             list.add(new CellModel("5-" + i, user.nsfw)); // "NSFW"
 

@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface RestApi {
 
-    @GET("VkYPLKvZ")
+    @GET("subreddit-data.json")
     Observable<ServiceResponse> getUser(@Query("per_page") int size, @Query("current_page") int page);
 
 }

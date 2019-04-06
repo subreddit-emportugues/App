@@ -8,9 +8,9 @@ public class Data {
     @SerializedName("id")
     @Expose
     public String id;
-    @SerializedName("subreddit")
+    @SerializedName("name")
     @Expose
-    public String subreddit;
+    public String name;
     @SerializedName("description")
     @Expose
     public String description;
@@ -20,9 +20,9 @@ public class Data {
     @SerializedName("age")
     @Expose
     public Long age;
-    @SerializedName("subscribers")
+    @SerializedName("members")
     @Expose
-    public Integer subscribers;
+    public Integer members;
     @SerializedName("icon")
     @Expose
     public String icon;

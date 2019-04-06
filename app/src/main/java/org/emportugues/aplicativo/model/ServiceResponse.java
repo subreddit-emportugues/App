@@ -32,8 +32,8 @@ public class ServiceResponse {
     @SerializedName("to")
     @Expose
     public Integer to;
-    @SerializedName("data")
+    @SerializedName("subreddits")
     @Expose
-    public List<Data> data = null;
+    public List<Data> subreddits = null;
 
 }

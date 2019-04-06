@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String BASE_URL = "https://pastebin.com/raw/";
+    private static final String BASE_URL = "https://emportugues.org/data/";
 
     private static Retrofit getRetrofit() {
         return new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory
@@ -54,14 +54,15 @@ public class NetworkUtils {
 
         Log.d(LOG_TAG, "Converting the response.");
         try {
-            for (Data data : serviceResponse.data) {
+            for (Data data : serviceResponse.subreddits) {
                 User user = new User();
                 user.id = Integer.parseInt(data.id);
-                user.subreddit = data.subreddit;
+                user.name = data.name;
+                user.links = "https://www.reddit.com/r/" + data.name;
                 user.description = data.description;
                 user.nsfw = data.nsfw;
                 user.age = getDate(new java.util.Date(data.age * 1000).toString());
-                user.subscribers = data.subscribers;
+                user.members = data.members;
                 user.icon = data.icon;
 
                 // add
