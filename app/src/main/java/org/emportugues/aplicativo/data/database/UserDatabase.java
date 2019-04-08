@@ -9,7 +9,7 @@ import android.util.Log;
 
 import org.emportugues.aplicativo.data.database.entity.User;
 
-// Update version number everytime the table is edited otherwise changes won't be delivered
+// Update version number everytime the JSON schema is edited otherwise changes won't be delivered
 @Database(entities = {User.class}, version = 1)
 @TypeConverters({DateConverter.class})
 public abstract class UserDatabase extends RoomDatabase {
