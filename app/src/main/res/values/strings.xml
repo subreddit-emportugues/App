@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">r/EmPortugues</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="sort_ascending">Sort Ascending</string>
-    <string name="sort_descending">Sort Descending</string>
-    <string name="clear_sorting">Clear</string>
-    <string name="row_show">Show 5. Row</string>
-    <string name="row_hide">Hide 5. Row</string>
+    <string name="header_age">Criação</string>
+    <string name="header_description">Descrição</string>
+    <string name="header_icon">Ícone</string>
+    <string name="header_members">Membros</string>
+    <string name="header_moderators">Moderadores</string>
+    <string name="header_name">Subreddit</string>
+    <string name="header_nsfw">NSFW</string>
+    <string name="header_recent_comments">Comentários</string>
+    <string name="header_recent_submissions">Postagens</string>
+    <string name="string_getting_json_message">Carregando&#8230;</string>
+    <string name="string_getting_json_title">Aguarde, por favor.</string>
+    <string name="string_internet_connection_not_available">Conecte-se à internet para utilizar este aplicativo.</string>
+    <string name="string_some_thing_wrong">Algo deu errado.</string>
+    <string name="nsfw_true">Sim</string>
+    <string name="nsfw_false">Não</string>
 </resources>
