@@ -72,15 +72,15 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
         viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().length));
         if (contactList.get(position).getIcon().equals("")) { //url.isEmpty()
             Picasso.get()
-                    .load(R.mipmap.ic_launcher)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+                    .load("https://b.thumbs.redditmedia.com/hiWgtDrja9SM3iHyv_b3dtES28ZBAKTBeJCfrZ03mNM.jpg")
+                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.mipmap.ic_launcher_round)
                     .into(viewHolder.imageView);
         } else {
             Picasso.get()
                     .load(contactList.get(position).getIcon())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.mipmap.ic_launcher_round)
                     .into(viewHolder.imageView); //this is your ImageView
         }
 
