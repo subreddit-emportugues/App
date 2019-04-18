@@ -3,31 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="horizontal"
+    tools:ignore="UnusedAttribute">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:paddingStart="7dp"
-        android:paddingEnd="7dp"
-        android:src="@mipmap/ic_launcher" />
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:padding="3dp"
+            android:src="@mipmap/ic_launcher_round" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:gravity="center_vertical"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceLarge"
         android:textSize="12sp"
         tools:text="Name" />
@@ -35,19 +36,21 @@
     <TextView
         android:id="@+id/textViewDescription"
         android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="start"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Description" />
 
     <TextView
         android:id="@+id/textViewMembers"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="end"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Members" />
@@ -55,9 +58,10 @@
     <TextView
         android:id="@+id/textViewAge"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Age" />
@@ -65,19 +69,21 @@
     <TextView
         android:id="@+id/textViewNSFW"
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="NSFW" />
 
     <TextView
         android:id="@+id/textViewComments"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Comments" />
@@ -85,19 +91,21 @@
     <TextView
         android:id="@+id/textViewSubmissions"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Submission" />
 
     <TextView
         android:id="@+id/textViewModerators"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:padding="3dp"
         android:textAppearance="?android:textAppearanceMedium"
         android:textSize="12sp"
         tools:text="Moderators" />
