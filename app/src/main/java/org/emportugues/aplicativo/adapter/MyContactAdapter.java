@@ -1,7 +1,6 @@
 package org.emportugues.aplicativo.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,25 +87,25 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
         }
 
         if (contactList.get(position).getId() % 2 == 1) {
-            viewHolder.frameLayout.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewName.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewDescription.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewMembers.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewAge.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewNSFW.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewComments.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewSubmissions.setBackgroundColor(Color.WHITE);
-            viewHolder.textViewModerators.setBackgroundColor(Color.WHITE);
+            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewComments.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewSubmissions.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
         } else {
-            viewHolder.frameLayout.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewName.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewDescription.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewMembers.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewAge.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewNSFW.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewComments.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewSubmissions.setBackgroundColor(Color.LTGRAY);
-            viewHolder.textViewModerators.setBackgroundColor(Color.LTGRAY);
+            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewComments.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewSubmissions.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
         }
 
         return viewHolder.rootView;

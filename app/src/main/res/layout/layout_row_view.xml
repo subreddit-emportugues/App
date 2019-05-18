@@ -11,103 +11,111 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="1dp">
+        android:layout_margin="@dimen/_1sdp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageViewIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
-            android:padding="3dp"
+            android:padding="@dimen/_3sdp"
             android:src="@mipmap/ic_launcher_round" />
     </FrameLayout>
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="160dp"
+        android:layout_width="@dimen/_160sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center_vertical"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceLarge"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Name" />
 
     <TextView
         android:id="@+id/textViewDescription"
-        android:layout_width="210dp"
+        android:layout_width="@dimen/_210sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="start"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Description" />
 
     <TextView
         android:id="@+id/textViewMembers"
-        android:layout_width="65dp"
+        android:layout_width="@dimen/_65sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Members" />
 
     <TextView
         android:id="@+id/textViewAge"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/_80sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Age" />
 
     <TextView
         android:id="@+id/textViewNSFW"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_60sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="NSFW" />
 
     <TextView
         android:id="@+id/textViewComments"
-        android:layout_width="85dp"
+        android:layout_width="@dimen/_85sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Comments" />
 
     <TextView
         android:id="@+id/textViewSubmissions"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/_80sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Submission" />
 
     <TextView
         android:id="@+id/textViewModerators"
-        android:layout_width="85dp"
+        android:layout_width="@dimen/_85sdp"
         android:layout_height="match_parent"
-        android:layout_margin="1dp"
+        android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
-        android:padding="3dp"
+        android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="12sp"
+        android:textColor="@color/grey300"
+        android:textSize="@dimen/_12ssp"
         tools:text="Moderators" />
 
 </LinearLayout>
