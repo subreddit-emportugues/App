@@ -70,7 +70,7 @@
                     android:background="@color/indigo800"
                     android:gravity="center"
                     android:padding="@dimen/_3sdp"
-                    android:text="@string/header_recent_submissions"
+                    android:text="@string/header_activity"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textColor="@color/grey100"
                     android:textSize="@dimen/_12ssp" />
