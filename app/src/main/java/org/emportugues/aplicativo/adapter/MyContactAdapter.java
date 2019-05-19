@@ -69,8 +69,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
         } else {
             viewHolder.textViewNSFW.setText(R.string.nsfw_false);
         }
-        viewHolder.textViewComments.setText(item.getRecentComments().toString());
-        viewHolder.textViewSubmissions.setText(item.getRecentSubmissions().toString());
+        viewHolder.textViewActivity.setText(String.valueOf(item.getTotalActivity()));
         viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().length));
         if (contactList.get(position).getIcon().equals("")) { //url.isEmpty()
             Picasso.get()
@@ -93,8 +92,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
             viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
             viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
             viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
-            viewHolder.textViewComments.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
-            viewHolder.textViewSubmissions.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
             viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
         } else {
             viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
@@ -103,8 +101,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
             viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
             viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
             viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
-            viewHolder.textViewComments.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
-            viewHolder.textViewSubmissions.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
             viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
         }
 
@@ -121,8 +118,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
         public final TextView textViewMembers;
         public final TextView textViewAge;
         public final TextView textViewNSFW;
-        public final TextView textViewComments;
-        public final TextView textViewSubmissions;
+        public final TextView textViewActivity;
         public final TextView textViewModerators;
 
         private ViewHolder(LinearLayout rootView,
@@ -133,8 +129,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
                            TextView textViewMembers,
                            TextView textViewAge,
                            TextView textViewNSFW,
-                           TextView textViewComments,
-                           TextView textViewSubmissions,
+                           TextView textViewActivity,
                            TextView textViewModerators
         ) {
             this.rootView = rootView;
@@ -145,8 +140,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
             this.textViewMembers = textViewMembers;
             this.textViewAge = textViewAge;
             this.textViewNSFW = textViewNSFW;
-            this.textViewComments = textViewComments;
-            this.textViewSubmissions = textViewSubmissions;
+            this.textViewActivity = textViewActivity;
             this.textViewModerators = textViewModerators;
         }
 
@@ -158,8 +152,7 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
             TextView textViewMembers = rootView.findViewById(R.id.textViewMembers);
             TextView textViewAge = rootView.findViewById(R.id.textViewAge);
             TextView textViewNSFW = rootView.findViewById(R.id.textViewNSFW);
-            TextView textViewComments = rootView.findViewById(R.id.textViewComments);
-            TextView textViewSubmissions = rootView.findViewById(R.id.textViewSubmissions);
+            TextView textViewSubmissions = rootView.findViewById(R.id.textViewActivity);
             TextView textViewModerators = rootView.findViewById(R.id.textViewModerators);
             return new ViewHolder(rootView,
                     frameLayout,
@@ -169,7 +162,6 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
                     textViewMembers,
                     textViewAge,
                     textViewNSFW,
-                    textViewComments,
                     textViewSubmissions,
                     textViewModerators
             );

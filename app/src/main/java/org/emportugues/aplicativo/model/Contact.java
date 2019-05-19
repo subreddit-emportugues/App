@@ -19,7 +19,7 @@ public class Contact {
     private Long age;
     @SerializedName("recent_submissions")
     @Expose
-    private Number recent_submissions;
+    private int recent_submissions;
     @SerializedName("icon")
     @Expose
     private String icon;
@@ -28,7 +28,10 @@ public class Contact {
     private Number members;
     @SerializedName("recent_comments")
     @Expose
-    private Number recent_comments;
+    private int recent_comments;
+    @SerializedName("total_activity")
+    @Expose
+    private int total_activity;
     @SerializedName("nsfw")
     @Expose
     private Boolean nsfw;
@@ -95,14 +98,14 @@ public class Contact {
     /**
      * @return The recent_submissions
      */
-    public Number getRecentSubmissions() {
+    public int getRecentSubmissions() {
         return recent_submissions;
     }
 
     /**
      * @param recent_submissions The recent_submissions
      */
-    public void setRecentSubmissions(Number recent_submissions) {
+    public void setRecentSubmissions(int recent_submissions) {
         this.recent_submissions = recent_submissions;
     }
 
@@ -137,14 +140,14 @@ public class Contact {
     /**
      * @return The recent_comments
      */
-    public Number getRecentComments() {
+    public int getRecentComments() {
         return recent_comments;
     }
 
     /**
      * @param recent_comments The recent_comments
      */
-    public void setRecentComments(Number recent_comments) {
+    public void setRecentComments(int recent_comments) {
         this.recent_comments = recent_comments;
     }
 
@@ -153,10 +156,10 @@ public class Contact {
     }
 
     /**
-     * @param recent_comments The recent_comments
+     * @param nsfw The recent_comments
      */
-    public void setNSFW(Boolean recent_comments) {
-        this.nsfw = recent_comments;
+    public void setNSFW(Boolean nsfw) {
+        this.nsfw = nsfw;
     }
 
     /**
@@ -173,4 +176,8 @@ public class Contact {
         this.moderators = moderators;
     }
 
+    public int getTotalActivity() {
+        total_activity = recent_comments + recent_submissions;
+        return total_activity;
+    }
 }

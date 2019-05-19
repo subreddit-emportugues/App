@@ -63,6 +63,19 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
+                    android:id="@+id/tvActivity"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_1sdp"
+                    android:background="@color/indigo800"
+                    android:gravity="center"
+                    android:padding="@dimen/_3sdp"
+                    android:text="@string/header_recent_submissions"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/grey100"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
                     android:id="@+id/tvMembers"
                     android:layout_width="@dimen/_65sdp"
                     android:layout_height="wrap_content"
@@ -89,6 +102,19 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <TextView
+                    android:id="@+id/tvModerators"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_1sdp"
+                    android:background="@color/indigo800"
+                    android:gravity="center"
+                    android:padding="@dimen/_3sdp"
+                    android:text="@string/header_moderators"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/grey100"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
                     android:id="@+id/tvNSFW"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="wrap_content"
@@ -101,51 +127,13 @@
                     android:textColor="@color/grey100"
                     android:textSize="@dimen/_12ssp" />
 
-                <TextView
-                    android:id="@+id/tvComments"
-                    android:layout_width="@dimen/_85sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:gravity="center"
-                    android:padding="@dimen/_3sdp"
-                    android:text="@string/header_recent_comments"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
-
-                <TextView
-                    android:id="@+id/tvSubmissions"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:gravity="center"
-                    android:padding="@dimen/_3sdp"
-                    android:text="@string/header_recent_submissions"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
-
-                <TextView
-                    android:id="@+id/tvModerators"
-                    android:layout_width="@dimen/_85sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:gravity="center"
-                    android:padding="@dimen/_3sdp"
-                    android:text="@string/header_moderators"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
             </LinearLayout>
 
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/indigo900"
+                android:background="@color/indigo800"
                 android:divider="@null"
                 android:scrollbars="none"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
