@@ -3,6 +3,10 @@ package org.emportugues.aplicativo.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Comparator;
+
 public class Contact {
 
     @SerializedName("id")
@@ -31,7 +35,7 @@ public class Contact {
     private int recent_comments;
     @SerializedName("total_activity")
     @Expose
-    private int total_activity;
+    private double total_activity;
     @SerializedName("nsfw")
     @Expose
     private Boolean nsfw;
@@ -176,8 +180,23 @@ public class Contact {
         this.moderators = moderators;
     }
 
-    public int getTotalActivity() {
-        total_activity = recent_comments + recent_submissions;
-        return total_activity;
+    public String getTotalActivity(ContactList contactList) {
+        DecimalFormatSymbols sep = new DecimalFormatSymbols();
+        sep.setDecimalSeparator(',');
+
+        double total = contactList.getActivity();
+        total_activity = ((recent_comments + recent_submissions) / total) * 100;
+        DecimalFormat df = new DecimalFormat("####0.00", sep);
+
+        return (total_activity > 0 && total_activity < 0.01 ? "< 0,01" : df.format(total_activity)) + '%';
+    }
+}
+
+class ActivityComparator implements Comparator<Contact>
+{
+    @Override
+    public int compare(Contact c1, Contact c2) {
+        return (c2.getRecentSubmissions() + c2.getRecentComments()) -
+                (c1.getRecentSubmissions() + c1.getRecentComments());
     }
 }
