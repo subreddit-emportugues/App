@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         /*
                          * Binding that List to Adapter
                          */
-                        adapter = new MyContactAdapter(MainActivity.this, contactList);
+                        adapter = new MyContactAdapter(MainActivity.this, response.body());
                         listView.setAdapter(adapter);
 
                     } else {
