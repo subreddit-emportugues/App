@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import org.emportugues.aplicativo.R;
 import org.emportugues.aplicativo.model.Contact;
+import org.emportugues.aplicativo.model.ContactList;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -24,21 +25,23 @@ import java.util.Locale;
 
 public class MyContactAdapter extends ArrayAdapter<Contact> {
 
-    List<Contact> contactList;
+    List<Contact> contacts;
     Context context;
     private LayoutInflater mInflater;
+    private ContactList contactList;
 
     // Constructors
-    public MyContactAdapter(Context context, List<Contact> objects) {
-        super(context, 0, objects);
+    public MyContactAdapter(Context context, ContactList contactList) {
+        super(context, 0, contactList.getContacts());
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
-        contactList = objects;
+        this.contactList = contactList;
+        contacts = contactList.getContacts();
     }
 
     @Override
     public Contact getItem(int position) {
-        return contactList.get(position);
+        return contacts.get(position);
     }
 
     @Override
@@ -64,14 +67,14 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (contactList.get(position).getNSFW()) {
+        if (contacts.get(position).getNSFW()) {
             viewHolder.textViewNSFW.setText(R.string.nsfw_true);
         } else {
             viewHolder.textViewNSFW.setText(R.string.nsfw_false);
         }
-        viewHolder.textViewActivity.setText(String.valueOf(item.getTotalActivity()));
+        viewHolder.textViewActivity.setText(String.valueOf(item.getTotalActivity(contactList)));
         viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().length));
-        if (contactList.get(position).getIcon().equals("")) { //url.isEmpty()
+        if (contacts.get(position).getIcon().equals("")) { //url.isEmpty()
             Picasso.get()
                     .load("https://b.thumbs.redditmedia.com/hiWgtDrja9SM3iHyv_b3dtES28ZBAKTBeJCfrZ03mNM.jpg")
                     .placeholder(R.mipmap.ic_launcher_round)
@@ -79,13 +82,13 @@ public class MyContactAdapter extends ArrayAdapter<Contact> {
                     .into(viewHolder.imageViewIcon);
         } else {
             Picasso.get()
-                    .load(contactList.get(position).getIcon())
+                    .load(contacts.get(position).getIcon())
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.mipmap.ic_launcher_round)
                     .into(viewHolder.imageViewIcon); //this is your ImageView
         }
 
-        if (contactList.get(position).getId() % 2 == 1) {
+        if (contacts.get(position).getId() % 2 == 1) {
             viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
             viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
             viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));

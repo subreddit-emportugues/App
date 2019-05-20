@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ContactList {
 
@@ -15,6 +16,7 @@ public class ContactList {
      * @return The contacts
      */
     public ArrayList<Contact> getContacts() {
+        Collections.sort(contacts, new ActivityComparator());
         return contacts;
     }
 
@@ -23,6 +25,16 @@ public class ContactList {
      */
     public void setContacts(ArrayList<Contact> contacts) {
         this.contacts = contacts;
+    }
+
+    public int getActivity() {
+        int total = 0;
+
+        for (Contact contact : contacts) {
+            total += contact.getRecentComments() + contact.getRecentSubmissions();
+        }
+
+        return total;
     }
 
 }
