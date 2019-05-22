@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/tvName"
-                    android:layout_width="@dimen/_160sdp"
+                    android:layout_width="@dimen/_165sdp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_1sdp"
                     android:background="@color/indigo800"

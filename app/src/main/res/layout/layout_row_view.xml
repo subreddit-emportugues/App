@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/imageViewIcon"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -24,13 +24,13 @@
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="@dimen/_160sdp"
+        android:layout_width="@dimen/_165sdp"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp"
         android:gravity="center_vertical"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="@color/grey300"
+        android:textColor="@color/orangeA200"
         android:textSize="@dimen/_12ssp"
         tools:text="Name" />
 

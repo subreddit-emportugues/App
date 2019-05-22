@@ -8,6 +8,7 @@
     <string name="header_name">Subreddit</string>
     <string name="header_nsfw">NSFW</string>
     <string name="header_activity">Atividade</string>
+    <string name="ic_subreddit_icon">https://b.thumbs.redditmedia.com/hiWgtDrja9SM3iHyv_b3dtES28ZBAKTBeJCfrZ03mNM.jpg</string>
     <string name="string_getting_json_message">Carregando&#8230;</string>
     <string name="string_getting_json_title">Aguarde, por favor.</string>
     <string name="string_internet_connection_not_available">Conecte-se à internet para utilizar este aplicativo.</string>

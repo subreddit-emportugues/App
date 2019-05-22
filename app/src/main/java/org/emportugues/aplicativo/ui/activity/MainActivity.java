@@ -11,9 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.emportugues.aplicativo.R;
-import org.emportugues.aplicativo.adapter.MyContactAdapter;
-import org.emportugues.aplicativo.model.Contact;
-import org.emportugues.aplicativo.model.ContactList;
+import org.emportugues.aplicativo.adapter.MyListAdapter;
+import org.emportugues.aplicativo.model.Subreddit;
+import org.emportugues.aplicativo.model.SubredditList;
 import org.emportugues.aplicativo.retrofit.api.ApiService;
 import org.emportugues.aplicativo.retrofit.api.RetroClient;
 import org.emportugues.aplicativo.utils.InternetConnection;
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private View parentView;
 
-    private ArrayList<Contact> contactList;
-    private MyContactAdapter adapter;
+    private ArrayList<Subreddit> subredditList;
+    private MyListAdapter adapter;
 
 
     @Override
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         /*
          * Array List for Binding Data from JSON to this List
          */
-        contactList = new ArrayList<>();
+        subredditList = new ArrayList<>();
 
         parentView = findViewById(R.id.parentLayout);
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/" +
-                        contactList.get(position).getName()));
+                        subredditList.get(position).getName()));
                 startActivity(myIntent);
             }
         });
@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
             /*
              * Calling JSON
              */
-            Call<ContactList> call = api.getMyJSON();
+            Call<SubredditList> call = api.getMyJSON();
 
             /*
              * Enqueue Callback will be call when get response...
              */
-            call.enqueue(new Callback<ContactList>() {
+            call.enqueue(new Callback<SubredditList>() {
                 @Override
-                public void onResponse(Call<ContactList> call, Response<ContactList> response) {
+                public void onResponse(Call<SubredditList> call, Response<SubredditList> response) {
                     //Dismiss Dialog
                     dialog.dismiss();
 
@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
                          * Got Successfully
                          */
                         assert response.body() != null;
-                        contactList = response.body().getContacts();
+                        subredditList = response.body().getSubreddits();
 
                         /*
                          * Binding that List to Adapter
                          */
-                        adapter = new MyContactAdapter(MainActivity.this, response.body());
+                        adapter = new MyListAdapter(MainActivity.this, response.body());
                         listView.setAdapter(adapter);
 
                     } else {
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ContactList> call, Throwable t) {
+                public void onFailure(Call<SubredditList> call, Throwable t) {
                     dialog.dismiss();
                 }
             });
