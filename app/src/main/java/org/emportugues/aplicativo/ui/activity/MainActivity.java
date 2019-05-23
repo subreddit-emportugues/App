@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Subreddit> subredditList;
     private MyListAdapter adapter;
 
+    private String previousColumn = "";
+    private boolean reversed = false;
+
+    private Response<SubredditList> subredditListResponse;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,12 +101,13 @@ public class MainActivity extends AppCompatActivity {
                          * Got Successfully
                          */
                         assert response.body() != null;
-                        subredditList = response.body().getSubreddits();
+                        subredditListResponse = response;
+                        subredditList = response.body().getSubreddits("default", false);
 
                         /*
                          * Binding that List to Adapter
                          */
-                        adapter = new MyListAdapter(MainActivity.this, response.body());
+                        adapter = new MyListAdapter(MainActivity.this, response.body(), "default", false);
                         listView.setAdapter(adapter);
 
                     } else {
@@ -119,6 +125,23 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(parentView, R.string.string_internet_connection_not_available, Snackbar.LENGTH_LONG).show();
         }
 
+    }
+
+    public void sort(View v) {
+        String column = v.getTag().toString();
+
+        if (column.equals(previousColumn)) {
+            reversed = !reversed;
+        } else {
+            reversed = false;
+        }
+
+        assert subredditListResponse.body() != null;
+
+        subredditList = subredditListResponse.body().getSubreddits(column, reversed);
+        adapter = new MyListAdapter(MainActivity.this, subredditListResponse.body(), column, reversed);
+        previousColumn = column;
+        listView.setAdapter(adapter);
     }
 
 }

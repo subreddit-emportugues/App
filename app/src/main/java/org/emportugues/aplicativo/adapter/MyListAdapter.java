@@ -31,12 +31,12 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
     private SubredditList subredditList;
 
     // Constructors
-    public MyListAdapter(Context context, SubredditList subredditList) {
-        super(context, 0, subredditList.getSubreddits());
+    public MyListAdapter(Context context, SubredditList subredditList, String sortingColumn, boolean reverse) {
+        super(context, 0, subredditList.getSubreddits(sortingColumn, reverse));
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.subredditList = subredditList;
-        subreddits = subredditList.getSubreddits();
+        subreddits = subredditList.getSubreddits(sortingColumn, reverse);
     }
 
     private static String getDate(String stringData) throws ParseException {

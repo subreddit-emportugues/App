@@ -95,7 +95,7 @@ public class Subreddit {
         DecimalFormatSymbols sep = new DecimalFormatSymbols();
         sep.setDecimalSeparator(',');
 
-        double total = subredditList.getActivity();
+        double total = subredditList.getTotalActivity();
         total_activity = ((submissions + comments) / total) * 100;
         DecimalFormat df = new DecimalFormat("####0.00", sep);
 
@@ -136,7 +136,7 @@ public class Subreddit {
 
 }
 
-class NameAscComparator implements Comparator<Subreddit> {
+class NameComparator implements Comparator<Subreddit> {
     public int compare(Subreddit c1, Subreddit c2) {
         String s1 = c1.getName();
         String s2 = c2.getName();
@@ -145,16 +145,7 @@ class NameAscComparator implements Comparator<Subreddit> {
 
 }
 
-class NameDescComparator implements Comparator<Subreddit> {
-    public int compare(Subreddit c1, Subreddit c2) {
-        String s1 = c1.getName();
-        String s2 = c2.getName();
-        return s2.compareToIgnoreCase(s1);
-    }
-
-}
-
-class DescriptionAscComparator implements Comparator<Subreddit> {
+class DescriptionComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         String s1 = c1.getDescription();
@@ -164,26 +155,7 @@ class DescriptionAscComparator implements Comparator<Subreddit> {
 
 }
 
-class DescriptionDescComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        String s1 = c1.getDescription();
-        String s2 = c2.getDescription();
-        return s2.compareToIgnoreCase(s1);
-    }
-
-}
-
-class ActivityAscComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        return (c1.getSubmissions() + c1.getComments()) -
-                (c2.getSubmissions() + c2.getComments());
-    }
-
-}
-
-class ActivityDescComparator implements Comparator<Subreddit> {
+class ActivityComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         return (c2.getSubmissions() + c2.getComments()) -
@@ -192,15 +164,7 @@ class ActivityDescComparator implements Comparator<Subreddit> {
 
 }
 
-class MemberAscComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        return c1.getMembers().intValue() - c2.getMembers().intValue();
-    }
-
-}
-
-class MemberDescComparator implements Comparator<Subreddit> {
+class MemberComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         return c2.getMembers().intValue() - c1.getMembers().intValue();
@@ -208,15 +172,7 @@ class MemberDescComparator implements Comparator<Subreddit> {
 
 }
 
-class AgeAscComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        return c1.getAge().intValue() - c2.getAge().intValue();
-    }
-
-}
-
-class AgeDescComparator implements Comparator<Subreddit> {
+class AgeComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         return c2.getAge().intValue() - c1.getAge().intValue();
@@ -224,15 +180,7 @@ class AgeDescComparator implements Comparator<Subreddit> {
 
 }
 
-class ModeratorAscComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        return c1.getModerators().length - c2.getModerators().length;
-    }
-
-}
-
-class ModeratorDescComparator implements Comparator<Subreddit> {
+class ModeratorComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         return c2.getModerators().length - c1.getModerators().length;
@@ -240,15 +188,7 @@ class ModeratorDescComparator implements Comparator<Subreddit> {
 
 }
 
-class NSFWAscComparator implements Comparator<Subreddit> {
-    @Override
-    public int compare(Subreddit c1, Subreddit c2) {
-        return c1.getNSFW().compareTo(c2.getNSFW());
-    }
-
-}
-
-class NSFWDescComparator implements Comparator<Subreddit> {
+class NSFWComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
         return c2.getNSFW().compareTo(c1.getNSFW());
