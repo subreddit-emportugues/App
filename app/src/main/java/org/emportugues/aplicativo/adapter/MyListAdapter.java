@@ -98,6 +98,26 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
             viewHolder.textViewNSFW.setText(R.string.nsfw_false);
         }
 
+        if (position % 2 == 1) {
+            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+            viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo500));
+        } else {
+            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+            viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.indigo400));
+        }
+
         return viewHolder.rootView;
 
     }
