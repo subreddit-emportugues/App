@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
         assert subredditListResponse.body() != null;
 
-        subredditList = subredditListResponse.body().getSubreddits(column, reversed);
         adapter = new MyListAdapter(MainActivity.this, subredditListResponse.body(), column, reversed);
         previousColumn = column;
         listView.setAdapter(adapter);
