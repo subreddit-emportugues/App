@@ -158,8 +158,8 @@ class DescriptionComparator implements Comparator<Subreddit> {
 class ActivityComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return (c2.getSubmissions() + c2.getComments()) -
-                (c1.getSubmissions() + c1.getComments());
+        return (c1.getSubmissions() + c1.getComments()) -
+                (c2.getSubmissions() + c2.getComments());
     }
 
 }
@@ -167,7 +167,7 @@ class ActivityComparator implements Comparator<Subreddit> {
 class MemberComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return c2.getMembers().intValue() - c1.getMembers().intValue();
+        return c1.getMembers().intValue() - c2.getMembers().intValue();
     }
 
 }
@@ -175,7 +175,7 @@ class MemberComparator implements Comparator<Subreddit> {
 class AgeComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return c2.getAge().intValue() - c1.getAge().intValue();
+        return c1.getAge().intValue() - c2.getAge().intValue();
     }
 
 }
@@ -183,7 +183,7 @@ class AgeComparator implements Comparator<Subreddit> {
 class ModeratorComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return c2.getModerators().length - c1.getModerators().length;
+        return c1.getModerators().length - c2.getModerators().length;
     }
 
 }
@@ -191,7 +191,7 @@ class ModeratorComparator implements Comparator<Subreddit> {
 class NSFWComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return c2.getNSFW().compareTo(c1.getNSFW());
+        return c1.getNSFW().compareTo(c2.getNSFW());
     }
 
 }

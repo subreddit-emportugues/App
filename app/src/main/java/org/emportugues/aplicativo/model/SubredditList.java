@@ -34,7 +34,6 @@ public class SubredditList {
                 Collections.sort(subreddits, new NSFWComparator());
                 break;
             case "Atividade":
-            default:
                 Collections.sort(subreddits, new ActivityComparator());
                 break;
         }
