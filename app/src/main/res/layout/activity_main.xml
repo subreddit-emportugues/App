@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentLayout"
@@ -22,7 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/indigo800"
+                android:background="@color/colorBlueGray800"
                 android:orientation="horizontal">
 
                 <TextView
@@ -30,130 +30,273 @@
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
+                    android:background="@color/colorBlueGray800"
                     android:padding="@dimen/_3sdp"
                     android:text="@string/header_icon"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/grey100"
+                    android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_12ssp" />
 
-                <TextView
-                    android:id="@+id/tvName"
+                <LinearLayout
                     android:layout_width="@dimen/_165sdp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_name"
-                    android:text="@string/header_name"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
 
-                <TextView
-                    android:id="@+id/tvDescription"
+                    android:layout_margin="@dimen/_1sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="sort"
+                        android:tag="@string/header_name"
+                        android:text="@string/header_name"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowSubredditAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowSubredditDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/_210sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="start"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_description"
-                    android:text="@string/header_description"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
 
-                <TextView
-                    android:id="@+id/tvActivity"
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="@dimen/_185sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="start"
+                        android:onClick="sort"
+                        android:tag="@string/header_description"
+                        android:text="@string/header_description"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowDescriptionAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowDescriptionDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/_85sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_activity"
-                    android:text="@string/header_activity"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
 
-                <TextView
-                    android:id="@+id/tvMembers"
-                    android:layout_width="@dimen/_65sdp"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/tvActivity"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:onClick="sort"
+                        android:tag="@string/header_activity"
+                        android:text="@string/header_activity"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowActivityAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowActivityDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_members"
-                    android:text="@string/header_members"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
 
-                <TextView
-                    android:id="@+id/tvAge"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_age"
-                    android:text="@string/header_age"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    <TextView
+                        android:id="@+id/tvMembers"
+                        android:layout_width="@dimen/_65sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:onClick="sort"
+                        android:tag="@string/header_members"
+                        android:text="@string/header_members"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
 
-                <TextView
-                    android:id="@+id/tvModerators"
+                    <ImageView
+                        android:id="@+id/arrowMembersAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowMembersDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/_85sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_moderators"
-                    android:text="@string/header_moderators"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
 
-                <TextView
-                    android:id="@+id/tvNSFW"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/tvAge"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:onClick="sort"
+                        android:tag="@string/header_age"
+                        android:text="@string/header_age"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowAgeAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowAgeDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/_115sdp"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
-                    android:background="@color/indigo800"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:onClick="sort"
-                    android:padding="@dimen/_3sdp"
-                    android:tag="@string/header_nsfw"
-                    android:text="@string/header_nsfw"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:textColor="@color/grey100"
-                    android:textSize="@dimen/_12ssp" />
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
+
+                    <TextView
+                        android:id="@+id/tvModerators"
+                        android:layout_width="@dimen/_90sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:onClick="sort"
+                        android:tag="@string/header_moderators"
+                        android:text="@string/header_moderators"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowModeratorsAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowModeratorsDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_1sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
+
+                    <TextView
+                        android:id="@+id/tvNSFW"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlueGray800"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:onClick="sort"
+                        android:tag="@string/header_nsfw"
+                        android:text="@string/header_nsfw"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:id="@+id/arrowNFSWAsc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+
+                    <ImageView
+                        android:id="@+id/arrowNSFWDesc"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorBlueGray700"
+                        app:srcCompat="@android:drawable/arrow_down_float" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -161,13 +304,15 @@
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/indigo800"
+                android:background="@color/colorBlueGray800"
                 android:divider="@null"
                 android:scrollbars="none"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            </ListView>
 
         </LinearLayout>
 
     </HorizontalScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

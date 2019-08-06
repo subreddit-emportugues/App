@@ -4,11 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.emportugues.aplicativo.R;
 import org.emportugues.aplicativo.adapter.MyListAdapter;
@@ -130,14 +133,265 @@ public class MainActivity extends AppCompatActivity {
     public void sort(View v) {
         String column = v.getTag().toString();
 
+        ImageView arrowSubredditAsc = findViewById(R.id.arrowSubredditAsc);
+        ImageView arrowSubredditDesc = findViewById(R.id.arrowSubredditDesc);
+        ImageView arrowDescriptionAsc = findViewById(R.id.arrowDescriptionAsc);
+        ImageView arrowDescriptionDesc = findViewById(R.id.arrowDescriptionDesc);
+        ImageView arrowActivityAsc = findViewById(R.id.arrowActivityAsc);
+        ImageView arrowActivityDesc = findViewById(R.id.arrowActivityDesc);
+        ImageView arrowMembersAsc = findViewById(R.id.arrowMembersAsc);
+        ImageView arrowMembersDesc = findViewById(R.id.arrowMembersDesc);
+        ImageView arrowAgeAsc = findViewById(R.id.arrowAgeAsc);
+        ImageView arrowAgeDesc = findViewById(R.id.arrowAgeDesc);
+        ImageView arrowModeratorsAsc = findViewById(R.id.arrowModeratorsAsc);
+        ImageView arrowModeratorsDesc = findViewById(R.id.arrowModeratorsDesc);
+        ImageView arrowNSFWAsc = findViewById(R.id.arrowNFSWAsc);
+        ImageView arrowNSFWDesc = findViewById(R.id.arrowNSFWDesc);
+
         if (column.equals(previousColumn)) {
             reversed = !reversed;
         } else {
             reversed = false;
         }
 
+        switch (column) {
+            case "Subreddit":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "Descrição":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "Atividade":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "Membros":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "Criação":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "Moderadores":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+            case "NSFW":
+                if (column.equals(previousColumn) && reversed) {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                } else {
+                    arrowSubredditAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowSubredditDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowDescriptionDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowActivityDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowMembersDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowAgeDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsAsc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowModeratorsDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                    arrowNSFWAsc.setColorFilter(getResources().getColor(R.color.colorOrangeA400));
+                    arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
+                }
+                break;
+
+        }
+
         assert subredditListResponse.body() != null;
 
+        subredditList = subredditListResponse.body().getSubreddits(column, reversed);
         adapter = new MyListAdapter(MainActivity.this, subredditListResponse.body(), column, reversed);
         previousColumn = column;
         listView.setAdapter(adapter);
