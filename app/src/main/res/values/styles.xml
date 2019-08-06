@@ -1,10 +1,10 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/indigo800</item>
-        <item name="colorPrimaryDark">@color/indigo900</item>
-        <item name="colorAccent">@color/orangeA200</item>
-        <item name="android:textColorPrimary">@color/orangeA200</item>
+        <item name="colorPrimary">@color/colorBlueGray800</item>
+        <item name="colorPrimaryDark">@color/colorBlueGray900</item>
+        <item name="colorAccent">@color/colorOrangeA400</item>
+        <item name="android:textColorPrimary">@color/colorOrangeA400</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

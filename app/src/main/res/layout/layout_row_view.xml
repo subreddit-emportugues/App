@@ -30,7 +30,7 @@
         android:gravity="center_vertical"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="@color/orangeA200"
+        android:textColor="@color/colorOrangeA100"
         android:textSize="@dimen/_12ssp"
         tools:text="Name" />
 
@@ -42,7 +42,7 @@
         android:gravity="start"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/_12ssp"
         tools:text="Description" />
 
@@ -54,55 +54,55 @@
         android:gravity="center"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/_12ssp"
         tools:text="Submission" />
 
     <TextView
         android:id="@+id/textViewMembers"
-        android:layout_width="@dimen/_65sdp"
+        android:layout_width="@dimen/_90sdp"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/_12ssp"
         tools:text="Members" />
 
     <TextView
         android:id="@+id/textViewAge"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/_1sdp"
-        android:gravity="center"
-        android:padding="@dimen/_3sdp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
-        android:textSize="@dimen/_12ssp"
-        tools:text="Age" />
-
-    <TextView
-        android:id="@+id/textViewModerators"
         android:layout_width="@dimen/_85sdp"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/_12ssp"
-        tools:text="Moderators" />
+        tools:text="Age" />
 
     <TextView
-        android:id="@+id/textViewNSFW"
-        android:layout_width="@dimen/_60sdp"
+        android:id="@+id/textViewModerators"
+        android:layout_width="@dimen/_115sdp"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp"
         android:gravity="center"
         android:padding="@dimen/_3sdp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/grey300"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_12ssp"
+        tools:text="Moderators" />
+
+    <TextView
+        android:id="@+id/textViewNSFW"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_1sdp"
+        android:gravity="center"
+        android:padding="@dimen/_3sdp"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/_12ssp"
         tools:text="NSFW" />
 
