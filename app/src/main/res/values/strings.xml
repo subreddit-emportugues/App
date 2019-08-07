@@ -13,6 +13,4 @@
     <string name="string_getting_json_title">Aguarde, por favor.</string>
     <string name="string_internet_connection_not_available">Conecte-se à internet para utilizar este aplicativo.</string>
     <string name="string_some_thing_wrong">Algo deu errado.</string>
-    <string name="nsfw_true">Sim</string>
-    <string name="nsfw_false">Não</string>
 </resources>

@@ -93,27 +93,27 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
         }
         viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().length));
         if (subreddits.get(position).getNSFW()) {
-            viewHolder.textViewNSFW.setText(R.string.nsfw_true);
+            viewHolder.imageViewNSFW.setImageResource(R.drawable.ic_check_box_black_24dp);
         } else {
-            viewHolder.textViewNSFW.setText(R.string.nsfw_false);
+            viewHolder.imageViewNSFW.setImageResource(R.drawable.ic_check_box_outline_blank_black_24dp);
         }
 
         if (position % 2 == 1) {
-            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
+            viewHolder.frameIcon.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
-            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
+            viewHolder.frameNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
             viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray500));
         } else {
-            viewHolder.frameLayout.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
+            viewHolder.frameIcon.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewName.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewDescription.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewMembers.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewAge.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
-            viewHolder.textViewNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
+            viewHolder.frameNSFW.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewActivity.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
             viewHolder.textViewModerators.setBackgroundColor(getContext().getResources().getColor(R.color.colorBlueGray400));
         }
@@ -124,7 +124,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
 
     private static class ViewHolder {
         public final LinearLayout rootView;
-        public final FrameLayout frameLayout;
+        public final FrameLayout frameIcon;
         public final ImageView imageViewIcon;
         public final TextView textViewName;
         public final TextView textViewDescription;
@@ -132,10 +132,11 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
         public final TextView textViewMembers;
         public final TextView textViewAge;
         public final TextView textViewModerators;
-        public final TextView textViewNSFW;
+        public final FrameLayout frameNSFW;
+        public final ImageView imageViewNSFW;
 
         private ViewHolder(LinearLayout rootView,
-                           FrameLayout frameLayout,
+                           FrameLayout frameIcon,
                            ImageView imageViewIcon,
                            TextView textViewName,
                            TextView textViewDescription,
@@ -143,10 +144,11 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
                            TextView textViewMembers,
                            TextView textViewAge,
                            TextView textViewModerators,
-                           TextView textViewNSFW
+                           FrameLayout frameNSFW,
+                           ImageView imageViewNSFW
         ) {
             this.rootView = rootView;
-            this.frameLayout = frameLayout;
+            this.frameIcon = frameIcon;
             this.imageViewIcon = imageViewIcon;
             this.textViewName = textViewName;
             this.textViewDescription = textViewDescription;
@@ -154,11 +156,12 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
             this.textViewMembers = textViewMembers;
             this.textViewAge = textViewAge;
             this.textViewModerators = textViewModerators;
-            this.textViewNSFW = textViewNSFW;
+            this.frameNSFW = frameNSFW;
+            this.imageViewNSFW = imageViewNSFW;
         }
 
         public static ViewHolder create(LinearLayout rootView) {
-            FrameLayout frameLayout = rootView.findViewById(R.id.frameLayout);
+            FrameLayout frameIcon = rootView.findViewById(R.id.frameIcon);
             ImageView imageViewIcon = rootView.findViewById(R.id.imageViewIcon);
             TextView textViewName = rootView.findViewById(R.id.textViewName);
             TextView textViewDescription = rootView.findViewById(R.id.textViewDescription);
@@ -166,10 +169,11 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
             TextView textViewMembers = rootView.findViewById(R.id.textViewMembers);
             TextView textViewAge = rootView.findViewById(R.id.textViewAge);
             TextView textViewModerators = rootView.findViewById(R.id.textViewModerators);
-            TextView textViewNSFW = rootView.findViewById(R.id.textViewNSFW);
+            FrameLayout frameNSFW = rootView.findViewById(R.id.frameNSFW);
+            ImageView imageViewNSFW = rootView.findViewById(R.id.imageViewNSFW);
 
             return new ViewHolder(rootView,
-                    frameLayout,
+                    frameIcon,
                     imageViewIcon,
                     textViewName,
                     textViewDescription,
@@ -177,7 +181,8 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
                     textViewMembers,
                     textViewAge,
                     textViewModerators,
-                    textViewNSFW
+                    frameNSFW,
+                    imageViewNSFW
             );
         }
 

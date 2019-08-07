@@ -8,7 +8,7 @@
     tools:ignore="UnusedAttribute">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frameIcon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_1sdp">
@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             android:padding="@dimen/_3sdp"
             android:src="@mipmap/ic_launcher_round" />
+
     </FrameLayout>
 
     <TextView
@@ -94,16 +95,20 @@
         android:textSize="@dimen/_12ssp"
         tools:text="Moderators" />
 
-    <TextView
-        android:id="@+id/textViewNSFW"
+    <FrameLayout
+        android:id="@+id/frameNSFW"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/_1sdp"
-        android:gravity="center"
-        android:padding="@dimen/_3sdp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_12ssp"
-        tools:text="NSFW" />
+        android:layout_margin="@dimen/_1sdp">
+
+        <ImageView
+            android:id="@+id/imageViewNSFW"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
+            android:padding="@dimen/_3sdp"
+            android:tint="@color/colorWhite" />
+
+    </FrameLayout>
 
 </LinearLayout>
