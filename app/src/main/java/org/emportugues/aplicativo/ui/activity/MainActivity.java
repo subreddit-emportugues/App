@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.emportugues.aplicativo.R;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private ListView listView;
     private View parentView;
+    private FloatingActionButton floatingActionButton;
 
     private ArrayList<Subreddit> subredditList;
     private MyListAdapter adapter;
@@ -66,6 +68,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/" +
                         subredditList.get(position).getName()));
                 startActivity(myIntent);
+            }
+        });
+
+        floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setAlpha(0.5f);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listView.setSelection(0);
+            }
+        });
+        floatingActionButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                listView.smoothScrollToPosition(0);
+                return true;
             }
         });
 
