@@ -49,7 +49,7 @@ public class SubredditList {
         this.subreddits = subreddits;
     }
 
-    public int getTotalActivity() {
+    int getTotalActivity() {
         int total = 0;
 
         for (Subreddit subreddit : subreddits) {

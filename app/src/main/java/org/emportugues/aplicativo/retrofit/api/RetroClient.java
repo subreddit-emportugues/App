@@ -5,14 +5,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroClient {
 
-    /********
-     * URLS
-     *******/
+    // URL
     private static final String ROOT_URL = "https://emportugues.org";
 
-    /**
-     * Get Retrofit Instance
-     */
+    // Get Retrofit instance
     private static Retrofit getRetrofitInstance() {
         return new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
@@ -20,10 +16,9 @@ public class RetroClient {
                 .build();
     }
 
-    /**
-     * Get API Service
-     *
-     * @return API Service
+    /*
+     * Get API service
+     * @return API service
      */
     public static ApiService getApiService() {
         return getRetrofitInstance().create(ApiService.class);

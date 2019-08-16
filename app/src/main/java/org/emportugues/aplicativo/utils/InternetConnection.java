@@ -9,9 +9,7 @@ import java.util.Objects;
 
 public class InternetConnection {
 
-    /**
-     * CHECK WHETHER INTERNET CONNECTION IS AVAILABLE OR NOT
-     */
+    // Check internet connection availability
     public static boolean checkConnection(@NonNull Context context) {
         return ((ConnectivityManager) Objects.requireNonNull(context.getSystemService
                 (Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo() != null;

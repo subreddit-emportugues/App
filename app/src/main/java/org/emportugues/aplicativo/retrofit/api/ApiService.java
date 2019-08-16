@@ -9,7 +9,7 @@ public interface ApiService {
 
     /*
     Retrofit get annotation with our URL
-    And our method that will return us the List of SubredditList
+    And our method that will return us the list of subreddits
     */
     @GET("/data/subreddits.json")
     Call<SubredditList> getMyJSON();
