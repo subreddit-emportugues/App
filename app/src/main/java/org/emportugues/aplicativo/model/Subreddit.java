@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Subreddit {
@@ -38,7 +39,7 @@ public class Subreddit {
     private Long age;
     @SerializedName("moderators")
     @Expose
-    private String[] moderators;
+    private ArrayList<String> moderators;
     @SerializedName("nsfw")
     @Expose
     private Boolean nsfw;
@@ -118,11 +119,11 @@ public class Subreddit {
         this.age = age;
     }
 
-    public String[] getModerators() {
+    public ArrayList<String> getModerators() {
         return moderators;
     }
 
-    public void setModerators(String[] moderators) {
+    public void setModerators(ArrayList<String> moderators) {
         this.moderators = moderators;
     }
 
@@ -183,7 +184,7 @@ class AgeComparator implements Comparator<Subreddit> {
 class ModeratorComparator implements Comparator<Subreddit> {
     @Override
     public int compare(Subreddit c1, Subreddit c2) {
-        return c1.getModerators().length - c2.getModerators().length;
+        return c1.getModerators().size() - c2.getModerators().size();
     }
 
 }

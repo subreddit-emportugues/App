@@ -1,15 +1,22 @@
 package org.emportugues.aplicativo.ui.activity;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,7 +29,9 @@ import org.emportugues.aplicativo.retrofit.api.ApiService;
 import org.emportugues.aplicativo.retrofit.api.RetroClient;
 import org.emportugues.aplicativo.utils.InternetConnection;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,12 +39,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * Views
-     */
     private ListView listView;
     private View parentView;
-    private FloatingActionButton floatingActionButton;
 
     private ArrayList<Subreddit> subredditList;
     private MyListAdapter adapter;
@@ -45,92 +50,95 @@ public class MainActivity extends AppCompatActivity {
 
     private Response<SubredditList> subredditListResponse;
 
+    ActionBar.Tab textViewSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        handleIntent(getIntent());
 
-        /*
-         * Array List for Binding Data from JSON to this List
-         */
+        // Array list for binding data from JSON to this list
         subredditList = new ArrayList<>();
 
         parentView = findViewById(R.id.parentLayout);
 
-        /*
-         * Getting List and Setting List Adapter
-         */
+        // Getting list and setting list adapter
         listView = findViewById(R.id.listView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            int orientation = getResources().getConfiguration().orientation;
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/" +
                         subredditList.get(position).getName()));
                 startActivity(myIntent);
+            } else {
+                Subreddit subredditPosition = adapter.getItem(position);
+                Intent launchNewIntent = new Intent(MainActivity.this, DialogActivity.class);
+                assert subredditPosition != null;
+                launchNewIntent.putExtra("Icon", subredditPosition.getIcon());
+                launchNewIntent.putExtra("Name", subredditPosition.getName());
+                launchNewIntent.putExtra("Description", subredditPosition.getDescription());
+                DecimalFormat formatter = new DecimalFormat("###,###,###");
+                String getSubmissionsFormatted = formatter.format(subredditPosition.getSubmissions()).replace(",", ".");
+                launchNewIntent.putExtra("Submissions", getSubmissionsFormatted);
+                String getCommentsFormatted = formatter.format(subredditPosition.getComments()).replace(",", ".");
+                launchNewIntent.putExtra("Comments", getCommentsFormatted);
+                String getMembersFormatted = formatter.format(subredditPosition.getMembers()).replace(",", ".");
+                launchNewIntent.putExtra("Members", getMembersFormatted);
+                launchNewIntent.putExtra("Age", subredditPosition.getAge() * 1000);
+                launchNewIntent.putStringArrayListExtra("Moderators", subredditPosition.getModerators());
+                launchNewIntent.putExtra("NSFW", subredditPosition.getNSFW());
+                startActivity(launchNewIntent);
             }
         });
+        listView.setOnItemLongClickListener((parent, view, position, id) -> {
+            Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/" +
+                    subredditList.get(position).getName()));
+            startActivity(myIntent);
+            return true;
+        });
 
-        floatingActionButton = findViewById(R.id.fab);
+        // Setting floating action button functionalities
+        FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setAlpha(0.5f);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listView.setSelection(0);
-            }
-        });
-        floatingActionButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                listView.smoothScrollToPosition(0);
-                return true;
-            }
+        floatingActionButton.setOnClickListener(view -> listView.setSelection(0));
+        floatingActionButton.setOnLongClickListener(view -> {
+            listView.smoothScrollToPosition(0);
+            return true;
         });
 
-        /*
-         * Checking Internet Connection
-         */
+        // Checking internet connection
         if (InternetConnection.checkConnection(getApplicationContext())) {
             final ProgressDialog dialog;
-            /*
-             * Progress Dialog for User Interaction
-             */
-            dialog = new ProgressDialog(MainActivity.this);
-            dialog.setTitle(getString(R.string.string_getting_json_title));
-            dialog.setMessage(getString(R.string.string_getting_json_message));
-            dialog.show();
 
-            //Creating an object of our api interface
+            // Progress dialog for user interaction
+            dialog = new ProgressDialog(MainActivity.this);
+            dialog.setTitle(getString(R.string.progress_dialog_title));
+            dialog.setMessage(getString(R.string.progress_dialog_message));
+            dialog.show();
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlueGray900)));
+
+            //Creating an object of our API interface
             ApiService api = RetroClient.getApiService();
 
-            /*
-             * Calling JSON
-             */
+            // Calling JSON
             Call<SubredditList> call = api.getMyJSON();
 
-            /*
-             * Enqueue Callback will be call when get response...
-             */
+            // Enqueue callback will be call when get response...
             call.enqueue(new Callback<SubredditList>() {
                 @Override
                 public void onResponse(Call<SubredditList> call, Response<SubredditList> response) {
-                    //Dismiss Dialog
+                    //Dismiss dialog
                     dialog.dismiss();
-
                     if (response.isSuccessful()) {
-                        /*
-                         * Got Successfully
-                         */
+                        // Got successfully
                         assert response.body() != null;
                         subredditListResponse = response;
                         subredditList = response.body().getSubreddits("default", false);
 
-                        /*
-                         * Binding that List to Adapter
-                         */
+                        // Binding that List to Adapter
                         adapter = new MyListAdapter(MainActivity.this, response.body(), "default", false);
                         listView.setAdapter(adapter);
-
                     } else {
                         Snackbar.make(parentView, R.string.string_some_thing_wrong, Snackbar.LENGTH_LONG).show();
                     }
@@ -141,11 +149,55 @@ public class MainActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
-
         } else {
             Snackbar.make(parentView, R.string.string_internet_connection_not_available, Snackbar.LENGTH_LONG).show();
         }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(
+                new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        adapter.getFilter().filter(newText);
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        hideKeyboard(MainActivity.this);
+                        searchView.clearFocus();
+                        return true;
+                    }
+                }
+        );
+        searchView.getQuery();
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_github) {
+            Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_github)));
+            startActivity(myIntent);
+        }
+        if (id == R.id.menu_reddit) {
+            Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_reddit)));
+            startActivity(myIntent);
+        }
+        if (id == R.id.menu_site) {
+            Intent launchNewIntent = new Intent(MainActivity.this, WebViewActivity.class);
+            startActivityForResult(launchNewIntent, 0);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void sort(View v) {
@@ -404,15 +456,43 @@ public class MainActivity extends AppCompatActivity {
                     arrowNSFWDesc.setColorFilter(getResources().getColor(R.color.colorBlueGray700));
                 }
                 break;
-
         }
 
         assert subredditListResponse.body() != null;
-
         subredditList = subredditListResponse.body().getSubreddits(column, reversed);
         adapter = new MyListAdapter(MainActivity.this, subredditListResponse.body(), column, reversed);
         previousColumn = column;
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+        }
+    }
+
+    private void doMySearch(String query) {
+        textViewSearch.setText(query);
+    }
+
+    public static void hideKeyboard(MainActivity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        assert imm != null;
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

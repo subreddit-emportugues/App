@@ -1,14 +1,17 @@
 package org.emportugues.aplicativo.adapter;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.request.RequestOptions;
 
@@ -19,16 +22,19 @@ import org.emportugues.aplicativo.model.SubredditList;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class MyListAdapter extends ArrayAdapter<Subreddit> {
 
-    List<Subreddit> subreddits;
-    Context context;
+    private List<Subreddit> subreddits;
+    private Context context;
+    private ArrayList<Subreddit> originalList;
     private LayoutInflater mInflater;
     private SubredditList subredditList;
+    private CustomFilter mFliter;
 
     // Constructors
     public MyListAdapter(Context context, SubredditList subredditList, String sortingColumn, boolean reverse) {
@@ -37,6 +43,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
         this.mInflater = LayoutInflater.from(context);
         this.subredditList = subredditList;
         subreddits = subredditList.getSubreddits(sortingColumn, reverse);
+        originalList = new ArrayList<>(subreddits);
     }
 
     private static String getDate(String stringData) throws ParseException {
@@ -44,6 +51,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
         Date date = inputDate.parse(stringData);
         SimpleDateFormat outputDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         System.out.println(date);
+        assert date != null;
         return outputDate.format(date);
     }
 
@@ -56,7 +64,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if (convertView == null) {
-            View view = mInflater.inflate(R.layout.layout_row_view, parent, false);
+            View view = mInflater.inflate(R.layout.adapter_row, parent, false);
             viewHolder = ViewHolder.create((LinearLayout) view);
             view.setTag(viewHolder);
         } else {
@@ -65,16 +73,17 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
 
         Subreddit item = getItem(position);
 
-        if (subreddits.get(position).getIcon().equals("")) { //url.isEmpty()
+        assert item != null;
+        if (item.getIcon().equals("")) { //url.isEmpty()
             GlideApp.with(context)
-                    .load(context.getString(R.string.ic_subreddit_icon))
+                    .load(context.getString(R.string.url_subreddit_icon))
                     .apply(RequestOptions.circleCropTransform())
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.mipmap.ic_launcher_round)
                     .into(viewHolder.imageViewIcon);
         } else {
             GlideApp.with(context)
-                    .load(subreddits.get(position).getIcon())
+                    .load(item.getIcon())
                     .apply(RequestOptions.circleCropTransform())
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.mipmap.ic_launcher_round)
@@ -91,8 +100,8 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().length));
-        if (subreddits.get(position).getNSFW()) {
+        viewHolder.textViewModerators.setText(String.valueOf(item.getModerators().size()));
+        if (item.getNSFW()) {
             viewHolder.imageViewNSFW.setImageResource(R.drawable.ic_check_box_black_24dp);
         } else {
             viewHolder.imageViewNSFW.setImageResource(R.drawable.ic_check_box_outline_blank_black_24dp);
@@ -123,17 +132,17 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
     }
 
     private static class ViewHolder {
-        public final LinearLayout rootView;
-        public final FrameLayout frameIcon;
-        public final ImageView imageViewIcon;
-        public final TextView textViewName;
-        public final TextView textViewDescription;
-        public final TextView textViewActivity;
-        public final TextView textViewMembers;
-        public final TextView textViewAge;
-        public final TextView textViewModerators;
-        public final FrameLayout frameNSFW;
-        public final ImageView imageViewNSFW;
+        final LinearLayout rootView;
+        final FrameLayout frameIcon;
+        final ImageView imageViewIcon;
+        final TextView textViewName;
+        final TextView textViewDescription;
+        final TextView textViewActivity;
+        final TextView textViewMembers;
+        final TextView textViewAge;
+        final TextView textViewModerators;
+        final FrameLayout frameNSFW;
+        final ImageView imageViewNSFW;
 
         private ViewHolder(LinearLayout rootView,
                            FrameLayout frameIcon,
@@ -160,7 +169,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
             this.imageViewNSFW = imageViewNSFW;
         }
 
-        public static ViewHolder create(LinearLayout rootView) {
+        static ViewHolder create(LinearLayout rootView) {
             FrameLayout frameIcon = rootView.findViewById(R.id.frameIcon);
             ImageView imageViewIcon = rootView.findViewById(R.id.imageViewIcon);
             TextView textViewName = rootView.findViewById(R.id.textViewName);
@@ -186,6 +195,63 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
             );
         }
 
+    }
+
+    public Filter getFilter() {
+        if (mFliter == null)
+            mFliter = new CustomFilter();
+        return mFliter;
+
+    }
+
+    private class CustomFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults result = new FilterResults();
+            if (constraint == null || constraint.length() == 0) {
+                result.values = originalList;
+                result.count = originalList.size();
+            } else {
+                final List<Subreddit> filteredList = new ArrayList<>();
+                String lowerConstraint = constraint.toString().toLowerCase();
+                for (Subreddit subList : originalList) {
+                    final String value =
+                            subList.getName().toLowerCase() +
+                                    subList.getDescription().toLowerCase() +
+                                    subList.getSubmissions() +
+                                    subList.getComments() +
+                                    subList.getMembers() +
+                                    subList.getModerators().toString().replace("[", "").replace("]", "").toLowerCase();
+                    if (value.contains(lowerConstraint)) {
+                        filteredList.add(subList); //add only items which matches
+                    }
+                }
+                result.values = filteredList;
+                result.count = filteredList.size();
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            if (results.count < 1) {
+                Toast emptyToast = Toast.makeText(context, R.string.toast_empty, Toast.LENGTH_SHORT);
+                emptyToast.getView().setBackgroundColor(context.getResources().getColor(R.color.colorOrangeA400));
+                emptyToast.setGravity(Gravity.CENTER, 0, 0);
+                LinearLayout toastLayout = (LinearLayout) emptyToast.getView();
+                TextView toastTextView = (TextView) toastLayout.getChildAt(0);
+                toastTextView.setTextSize(context.getResources().getDimension(R.dimen._4ssp));
+                toastTextView.setTextColor(context.getResources().getColor(R.color.colorBlueGray900));
+                emptyToast.show();
+            }
+
+            ArrayList<Subreddit> filteredSubreddits = (ArrayList<Subreddit>) results.values;
+            clear();
+            addAll(filteredSubreddits);
+        }
     }
 
 }

@@ -5,7 +5,7 @@
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/colorBlueGray800"
     android:fitsSystemWindows="true"
     tools:context=".ui.activity.MainActivity">
 
@@ -38,7 +38,7 @@
                     android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
-                    android:layout_width="@dimen/_165sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="wrap_content"
 
                     android:layout_margin="@dimen/_1sdp"
@@ -47,7 +47,7 @@
 
                     <TextView
                         android:id="@+id/tvName"
-                        android:layout_width="@dimen/_140sdp"
+                        android:layout_width="@dimen/_145sdp"
                         android:layout_height="wrap_content"
                         android:background="@color/colorBlueGray800"
                         android:clickable="true"
@@ -72,7 +72,6 @@
                         android:layout_height="match_parent"
                         android:tint="@color/colorBlueGray700"
                         app:srcCompat="@android:drawable/arrow_down_float" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -187,7 +186,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="@dimen/_85sdp"
+                    android:layout_width="@dimen/_130sdp"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
                     android:orientation="horizontal"
@@ -195,7 +194,7 @@
 
                     <TextView
                         android:id="@+id/tvAge"
-                        android:layout_width="@dimen/_60sdp"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:background="@color/colorBlueGray800"
                         android:clickable="true"
@@ -295,9 +294,7 @@
                         android:layout_height="match_parent"
                         android:tint="@color/colorBlueGray700"
                         app:srcCompat="@android:drawable/arrow_down_float" />
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <ListView
@@ -308,17 +305,14 @@
                 android:divider="@null"
                 android:scrollbars="none"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
         </LinearLayout>
-
     </HorizontalScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_arrow_upward_black_24dp" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
