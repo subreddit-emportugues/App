@@ -5,7 +5,7 @@ Aplicativo para Android que exibe informações sobre subreddits lusófonos e af
 
 O aplicativo usa [Retrofit](https://square.github.io/retrofit/) para descarregar um arquivo em formato JSON armazenado num servidor remoto a fim de desserializá-lo num POJO convertido por meio de [GSON](https://github.com/google/gson) e apresentar os resultados numa `ListView` com aparência de tabela.
 
-A atividade principal permite filtrar a base de dados com `SearchView`, reordenar as colunas da tabela com `Comparator` e conferir e visitar itens da lista com `Theme.AppCompat.Dialog` e `Intent` além de contar com um `FloatingActionButton` para facilitar a navegação e um `Menu` com links para o [subreddit](https://www.reddit.com/r/EmPortugues/), o [site](https://emportugues.org/) e este repositório.
+A atividade principal do aplicativo permite filtrar a base de dados com `SearchView`, reordenar as colunas da tabela com `Comparator` e conferir e visitar itens da lista com `Theme.AppCompat.Dialog` e `Intent` além de contar com um `FloatingActionButton` para facilitar a navegação e um `Menu` com links para o [subreddit](https://www.reddit.com/r/EmPortugues/), o [site](https://emportugues.org/) e este repositório.
 
 As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"description"`, `"recent_submissions"` e `"recent_comments"`, `"members"`, `"age"`, `"moderators"`, `"nsfw"` e o link de cada subreddit listado.
 
