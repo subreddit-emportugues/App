@@ -1,4 +1,4 @@
-# App [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
+# App
 
 ## Descrição
 Aplicativo para Android que exibe informações sobre subreddits lusófonos e afins publicados no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
@@ -150,15 +150,16 @@ E [confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugu
 
 ## Demonstração
 
-[Baixe o aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) para testá-lo.
+[Baixe o aplicativo para entender como funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo)
 
 ![](/app.gif)
 
 ## Referências
 
-* Repositório: https://github.com/subreddit-emportugues/App
-* Comunidade: https://www.reddit.com/r/EmPortugues/
 * Aplicativo: https://play.google.com/store/apps/details?id=org.emportugues.aplicativo
+* Comunidade: https://www.reddit.com/r/EmPortugues
+* Organização: https://github.com/subreddit-emportugues
+* Repositório: https://github.com/subreddit-emportugues/App
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/5
 * Equipe:
 * Licença: 
