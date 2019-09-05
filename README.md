@@ -1,7 +1,7 @@
 # App [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 
 ## Descrição
-[Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) para Android que exibe informações sobre subreddits lusófonos e afins publicados no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
+Aplicativo para Android que exibe informações sobre subreddits lusófonos e afins publicados no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
 
 O aplicativo usa [Retrofit](https://square.github.io/retrofit/) para descarregar um arquivo em formato JSON armazenado num servidor remoto a fim de desserializá-lo num POJO convertido por meio de [GSON](https://github.com/google/gson) e apresentar os resultados numa `ListView` com aparência de tabela.
 
@@ -19,7 +19,7 @@ As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"descript
 
 ## Instalação
 1. Baixe o repositório;
-2. descomprima as pastas;
+2. descomprima o arquivo;
 3. execute o [Android Studio](https://developer.android.com/studio/);
 4. abra um novo projeto;
 5. e selecione "App-master".
@@ -35,39 +35,39 @@ private static final String ROOT_URL = "https://emportugues.org";
 
 Para alterar as chaves do objeto JSON, em [Subreddit.java](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/java/org/emportugues/aplicativo/model/Subreddit.java#L13), edite:
 ```
- @SerializedName("id")
- @Expose
- private Integer id;
- @SerializedName("icon")
- @Expose
- private String icon;
- @SerializedName("name")
- @Expose
- private String name;
- @SerializedName("description")
- @Expose
- private String description;
- @SerializedName("recent_submissions")
- @Expose
- private int submissions;
- @SerializedName("recent_comments")
- @Expose
- private int comments;
- @SerializedName("total_activity")
- @Expose
- private double total_activity;
- @SerializedName("members")
- @Expose
- private Number members;
- @SerializedName("age")
- @Expose
- private Long age;
- @SerializedName("moderators")
- @Expose
- private ArrayList<String> moderators;
- @SerializedName("nsfw")
- @Expose
- private Boolean nsfw;
+@SerializedName("id")
+@Expose
+private Integer id;
+@SerializedName("icon")
+@Expose
+private String icon;
+@SerializedName("name")
+@Expose
+private String name;
+@SerializedName("description")
+@Expose
+private String description;
+@SerializedName("recent_submissions")
+@Expose
+private int submissions;
+@SerializedName("recent_comments")
+@Expose
+private int comments;
+@SerializedName("total_activity")
+@Expose
+private double total_activity;
+@SerializedName("members")
+@Expose
+private Number members;
+@SerializedName("age")
+@Expose
+private Long age;
+@SerializedName("moderators")
+@Expose
+private ArrayList<String> moderators;
+@SerializedName("nsfw")
+@Expose
+private Boolean nsfw;
 ```
 
 Para alterar o endereço da `WebView`, em [strings.xml](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/res/values/strings.xml#L42), edite:
