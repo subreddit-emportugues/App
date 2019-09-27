@@ -148,7 +148,7 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 ## Demonstração
 
-[Baixe o aplicativo para entender como funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) ![](/app.gif)
+[Baixe o aplicativo para entender como funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) ![](/aplicativo.gif)
 
 ## Referências
 
