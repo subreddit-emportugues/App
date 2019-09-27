@@ -25,7 +25,7 @@ As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"descript
 5. e selecione "App-master".
 
 ## Instruções
-Para alterar o endereço do arquivo JSON, em [RetroClient.java](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/RetroClient.java#L9) e em [ApiService.java](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/ApiService.java#L14), edite:
+Para alterar o endereço do arquivo JSON, em [RetroClient.java](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/RetroClient.java) e em [ApiService.java](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/ApiService.java), edite:
 ```
 private static final String ROOT_URL = "https://emportugues.org";
 ```
@@ -33,7 +33,7 @@ private static final String ROOT_URL = "https://emportugues.org";
 @GET("/data/subreddits.json")
 ```
 
-Para alterar as chaves do objeto JSON, em [Subreddit.java](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/java/org/emportugues/aplicativo/model/Subreddit.java#L13), edite:
+Para alterar as chaves do objeto JSON, em [Subreddit.java](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/java/org/emportugues/aplicativo/model/Subreddit.java), edite:
 ```
 @SerializedName("id")
 @Expose
@@ -70,7 +70,7 @@ private ArrayList<String> moderators;
 private Boolean nsfw;
 ```
 
-Para alterar o endereço da `WebView`, em [strings.xml](https://github.com/subreddit-emportugues/App/blob/master/app/src/main/res/values/strings.xml#L42), edite:
+Para alterar o endereço da `WebView`, em [strings.xml](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/res/values/strings.xml), edite:
 ```
 <string name="url_website">https://emportugues.org</string>
 ```
@@ -144,15 +144,11 @@ annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
 Você pode colaborar com o desenvolvimento deste repositório!
 
-[Leia as diretrizes para colaboração](/CONTRIBUTING.md) antes de [reportar um novo problema](https://github.com/subreddit-emportugues/App/issues) ou [solicitar o recebimento de uma modificação](https://github.com/subreddit-emportugues/App/pulls).
-
-E [confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugues/projects/5) e [participe da equipe do aplicativo]() para saber a respeito do progresso deste repositório caso queira colaborar.
+[Confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugues/projects/5), [entre em contato com a equipe de moderação](https://reddit.com/message/compose?to=/r/EmPortugues) e [participe da equipe de desenvolvimento](https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores) para saber a respeito do progresso deste repositório caso queira colaborar antes de [reportar um novo problema](https://github.com/subreddit-emportugues/aplicativo/issues) ou [solicitar o recebimento de uma modificação](https://github.com/subreddit-emportugues/aplicativo/pulls).
 
 ## Demonstração
 
-[Baixe o aplicativo para entender como funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo)
-
-![](/app.gif)
+[Baixe o aplicativo para entender como funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) ![](/app.gif)
 
 ## Referências
 
@@ -161,5 +157,5 @@ E [confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugu
 * Organização: https://github.com/subreddit-emportugues
 * Repositório: https://github.com/subreddit-emportugues/App
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/5
-* Equipe:
+* Equipe: https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores
 * Licença: 
