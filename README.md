@@ -1,4 +1,4 @@
-# App
+# Aplicativo
 
 ## Descrição
 Aplicativo para Android que exibe informações sobre subreddits lusófonos e afins publicados no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/).
