@@ -5,7 +5,7 @@ Aplicativo para Android que exibe informações sobre subreddits lusófonos e af
 
 O aplicativo usa [Retrofit](https://square.github.io/retrofit/) para descarregar um arquivo em formato JSON armazenado num servidor remoto a fim de desserializá-lo num POJO convertido por meio de [GSON](https://github.com/google/gson) e apresentar os resultados numa `ListView` com aparência de tabela.
 
-A atividade principal do aplicativo permite filtrar a base de dados com `SearchView`, reordenar as colunas da tabela com `Comparator` e conferir e visitar itens da lista com `Theme.AppCompat.Dialog` e `Intent` além de contar com um `FloatingActionButton` para facilitar a navegação e um `Menu` com links para o [subreddit](https://www.reddit.com/r/EmPortugues/), o [site](https://emportugues.org/) e este repositório.
+A atividade principal do aplicativo permite filtrar os dados com `SearchView`, reordenar as colunas da tabela com `Comparator` e conferir e visitar itens da lista com `Theme.AppCompat.Dialog` e `Intent` além de contar com um `FloatingActionButton` para facilitar a navegação e um `Menu` com links para o [subreddit](https://www.reddit.com/r/EmPortugues/), o [site](https://emportugues.org/) e este repositório.
 
 As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"description"`, `"recent_submissions"` e `"recent_comments"`, `"members"`, `"age"`, `"moderators"`, `"nsfw"` e o link de cada subreddit listado.
 
@@ -18,11 +18,10 @@ As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"descript
 * [Referências](#Referências)
 
 ## Instalação
-1. Baixe o repositório;
-2. descomprima o arquivo;
-3. execute o [Android Studio](https://developer.android.com/studio/);
-4. abra um novo projeto;
-5. e selecione "App-master".
+1. Clone o repositório;
+2. execute o [Android Studio](https://developer.android.com/studio/);
+3. abra um novo projeto;
+4. e selecione "aplicativo".
 
 ## Instruções
 Para alterar o endereço do arquivo JSON, em [RetroClient.java](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/RetroClient.java) e em [ApiService.java](https://github.com/subreddit-emportugues/aplicativo/blob/master/app/src/main/java/org/emportugues/aplicativo/retrofit/api/ApiService.java), edite:
@@ -148,7 +147,7 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 ## Demonstração
 
-[Baixe o aplicativo para entender como o código deste repositório funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) ![](/aplicativo.gif)
+[Baixe o aplicativo para entender como o código deste repositório funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo)
 
 ## Referências
 
