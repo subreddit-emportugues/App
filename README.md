@@ -147,7 +147,7 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 ## Download
 
-<a href='https://play.google.com/store/apps/details?id=org.emportugues.aplicativo'><img alt='' src='/google-play-badge.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=org.emportugues.aplicativo'><img alt='' src='https://play.google.com/intl/en_us/badges/images/generic/pt-br_badge_web_generic.png'/></a>
 
 ## Referências
 
