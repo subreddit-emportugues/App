@@ -55,7 +55,6 @@ public class SubredditList {
         for (Subreddit subreddit : subreddits) {
             total += subreddit.getComments() + subreddit.getSubmissions();
         }
-
         return total;
     }
 

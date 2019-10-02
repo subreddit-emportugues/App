@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorBlueGray400">#78909C</color>
     <color name="colorBlueGray500">#607D8B</color>
     <color name="colorBlueGray700">#455A64</color>
@@ -8,4 +9,5 @@
     <color name="colorOrangeA100">#FFD180</color>
     <color name="colorOrangeA400">#FF9100</color>
     <color name="colorWhite">#FFFFFF</color>
+
 </resources>

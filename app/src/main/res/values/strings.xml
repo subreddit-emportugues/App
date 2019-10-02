@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">r/EmPortugues</string>
     <string name="button_dialog">Visitar</string>
     <string name="dialog_age">(criado há&#160;</string>
@@ -36,10 +37,11 @@
     <string name="time_year">&#160;ano).</string>
     <string name="time_years">&#160;anos).</string>
     <string name="toast_empty">"Nenhum subreddit encontrado."</string>
-    <string name="url_github">https://github.com/subreddit-emportugues</string>
+    <string name="url_github">https://github.com/subreddit-emportugues/aplicativo</string>
     <string name="url_reddit">https://www.reddit.com/r/EmPortugues</string>
     <string name="url_subreddit_icon">https://b.thumbs.redditmedia.com/hiWgtDrja9SM3iHyv_b3dtES28ZBAKTBeJCfrZ03mNM.jpg</string>
     <string name="url_website">https://emportugues.org</string>
     <string name="zero_feminine">Nenhuma</string>
     <string name="zero_masculine">nenhum</string>
+
 </resources>
