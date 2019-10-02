@@ -14,7 +14,7 @@ As informações apresentadas no aplicativo são: `"icon"`, `"name"`, `"descript
 * [Instruções](#Instruções)
 * [Dependências](#Dependências)
 * [Colaboração](#Colaboração)
-* [Demonstração](#Demonstração)
+* [Download](#Download)
 * [Referências](#Referências)
 
 ## Instalação
@@ -145,9 +145,9 @@ Você pode colaborar com o desenvolvimento deste repositório!
 
 [Confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugues/projects/5), [entre em contato com a equipe de moderação](https://reddit.com/message/compose?to=/r/EmPortugues) e [participe da equipe de desenvolvimento](https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores) para saber a respeito do progresso deste repositório caso queira colaborar antes de [reportar um novo problema](https://github.com/subreddit-emportugues/aplicativo/issues) ou [solicitar o recebimento de uma modificação](https://github.com/subreddit-emportugues/aplicativo/pulls).
 
-## Demonstração
+## Download
 
-[Baixe o aplicativo para entender como o código deste repositório funciona.](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo)
+<a href='https://play.google.com/store/apps/details?id=org.emportugues.aplicativo'><img alt='' src='/google-play-badge.png'/></a>
 
 ## Referências
 
