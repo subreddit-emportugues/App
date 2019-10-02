@@ -1,6 +1,5 @@
 package org.emportugues.aplicativo.ui.activity;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -49,15 +48,27 @@ public class MainActivity extends AppCompatActivity {
     private String previousColumn = "";
     private boolean reversed = false;
 
+    /*private boolean reordered = false;
+    private boolean filtered = false;*/
+
     private Response<SubredditList> subredditListResponse;
 
-    ActionBar.Tab textViewSearch;
+    public static void hideKeyboard(MainActivity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        assert imm != null;
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        handleIntent(getIntent());
 
         // Array list for binding data from JSON to this list
         subredditList = new ArrayList<>();
@@ -74,22 +85,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             } else {
                 Subreddit subredditPosition = adapter.getItem(position);
-                Intent launchNewIntent = new Intent(MainActivity.this, DialogActivity.class);
+                Intent newIntent = new Intent(MainActivity.this, DialogActivity.class);
                 assert subredditPosition != null;
-                launchNewIntent.putExtra("Icon", subredditPosition.getIcon());
-                launchNewIntent.putExtra("Name", subredditPosition.getName());
-                launchNewIntent.putExtra("Description", subredditPosition.getDescription());
+                newIntent.putExtra("Icon", subredditPosition.getIcon());
+                newIntent.putExtra("Name", subredditPosition.getName());
+                newIntent.putExtra("Description", subredditPosition.getDescription());
                 DecimalFormat formatter = new DecimalFormat("###,###,###");
                 String getSubmissionsFormatted = formatter.format(subredditPosition.getSubmissions()).replace(",", ".");
-                launchNewIntent.putExtra("Submissions", getSubmissionsFormatted);
+                newIntent.putExtra("Submissions", getSubmissionsFormatted);
                 String getCommentsFormatted = formatter.format(subredditPosition.getComments()).replace(",", ".");
-                launchNewIntent.putExtra("Comments", getCommentsFormatted);
+                newIntent.putExtra("Comments", getCommentsFormatted);
                 String getMembersFormatted = formatter.format(subredditPosition.getMembers()).replace(",", ".");
-                launchNewIntent.putExtra("Members", getMembersFormatted);
-                launchNewIntent.putExtra("Age", subredditPosition.getAge() * 1000);
-                launchNewIntent.putStringArrayListExtra("Moderators", subredditPosition.getModerators());
-                launchNewIntent.putExtra("NSFW", subredditPosition.getNSFW());
-                startActivity(launchNewIntent);
+                newIntent.putExtra("Members", getMembersFormatted);
+                newIntent.putExtra("Age", subredditPosition.getAge() * 1000);
+                newIntent.putStringArrayListExtra("Moderators", subredditPosition.getModerators());
+                newIntent.putExtra("NSFW", subredditPosition.getNSFW());
+                startActivity(newIntent);
             }
         });
         listView.setOnItemLongClickListener((parent, view, position, id) -> {
@@ -117,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
             dialog.setTitle(getString(R.string.progress_dialog_title));
             dialog.setMessage(getString(R.string.progress_dialog_message));
             dialog.show();
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
             Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlueGray900)));
 
             //Creating an object of our API interface
@@ -158,28 +171,69 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         MenuItem searchItem = menu.findItem(R.id.action_search);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
         SearchView searchView = (SearchView) searchItem.getActionView();
         assert searchManager != null;
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setOnQueryTextListener(
-                new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        adapter.getFilter().filter(newText);
-                        return true;
-                    }
+        searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                                              @Override
+                                              public boolean onQueryTextChange(String newText) {
+                                                  adapter.getFilter().filter(newText);
+                                                  /*if (!newText.equals("")) {
+                                                      filtered = true;
+                                                  }*/
 
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        hideKeyboard(MainActivity.this);
-                        searchView.clearFocus();
-                        return true;
-                    }
-                }
+                                                  return false;
+                                              }
+
+                                              @Override
+                                              public boolean onQueryTextSubmit(String query) {
+                                                  hideKeyboard(MainActivity.this);
+                                                  searchView.clearFocus();
+                                                  //filtered = true;
+
+                                                  return false;
+                                              }
+                                          }
         );
+        searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                //if (filtered && reordered) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                /*} else {
+                    filtered = false;
+                }*/
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                // TODO Auto-generated method stub
+                return true;
+            }
+        });
+        View closeButton = searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
+        closeButton.setOnClickListener(v -> {
+            //if (filtered && reordered) {
+            hideKeyboard(MainActivity.this);
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+            /*} else {
+                searchView.setQuery("", false);
+                filtered = false;
+            }*/
+        });
         searchView.getQuery();
 
         return true;
@@ -467,36 +521,15 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyListAdapter(MainActivity.this, subredditListResponse.body(), column, reversed);
         previousColumn = column;
         listView.setAdapter(adapter);
+        /*if (filtered) {
+            reordered = true;
+        }*/
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        handleIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            doMySearch(query);
-        }
-    }
-
-    private void doMySearch(String query) {
-        textViewSearch.setText(query);
-    }
-
-    public static void hideKeyboard(MainActivity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(MainActivity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        assert imm != null;
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }
