@@ -47,10 +47,9 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
     }
 
     private static String getDate(String stringData) throws ParseException {
-        SimpleDateFormat inputDate = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.getDefault());
+        SimpleDateFormat inputDate = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH);
         Date date = inputDate.parse(stringData);
         SimpleDateFormat outputDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        System.out.println(date);
         assert date != null;
         return outputDate.format(date);
     }
@@ -131,6 +130,13 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
 
     }
 
+    public Filter getFilter() {
+        if (mFliter == null)
+            mFliter = new CustomFilter();
+        return mFliter;
+
+    }
+
     private static class ViewHolder {
         final LinearLayout rootView;
         final FrameLayout frameIcon;
@@ -197,13 +203,6 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
 
     }
 
-    public Filter getFilter() {
-        if (mFliter == null)
-            mFliter = new CustomFilter();
-        return mFliter;
-
-    }
-
     private class CustomFilter extends Filter {
 
         @Override
@@ -224,7 +223,7 @@ public class MyListAdapter extends ArrayAdapter<Subreddit> {
                                     subList.getMembers() +
                                     subList.getModerators().toString().replace("[", "").replace("]", "").toLowerCase();
                     if (value.contains(lowerConstraint)) {
-                        filteredList.add(subList); //add only items which matches
+                        filteredList.add(subList);
                     }
                 }
                 result.values = filteredList;
