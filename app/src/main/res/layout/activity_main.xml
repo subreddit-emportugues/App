@@ -186,7 +186,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="@dimen/_130sdp"
+                    android:layout_width="@dimen/_100sdp"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_1sdp"
                     android:orientation="horizontal"
@@ -194,7 +194,7 @@
 
                     <TextView
                         android:id="@+id/tvAge"
-                        android:layout_width="@dimen/_100sdp"
+                        android:layout_width="@dimen/_75sdp"
                         android:layout_height="wrap_content"
                         android:background="@color/colorBlueGray800"
                         android:clickable="true"
@@ -220,6 +220,7 @@
                         android:layout_height="match_parent"
                         android:tint="@color/colorBlueGray700"
                         app:srcCompat="@android:drawable/arrow_down_float" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -315,4 +316,5 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_arrow_upward_black_24dp" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
