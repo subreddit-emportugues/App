@@ -157,4 +157,4 @@ Você pode colaborar com o desenvolvimento deste projeto!
 * Repositório: https://github.com/subreddit-emportugues/App
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/5
 * Equipe: https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores
-* Licença: 
+* Licença: https://github.com/subreddit-emportugues/aplicativo/blob/master/LICENSE
